@@ -15,21 +15,21 @@
  * @author Elcodi Team <tech@elcodi.com>
  */
 
-namespace Elcodi\Bundle\CartBundle;
+namespace Elcodi\Bundle\StoreBundle;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-use Elcodi\Bundle\CartBundle\CompilerPass\MappingCompilerPass;
-use Elcodi\Bundle\CartBundle\DependencyInjection\ElcodiCartExtension;
 use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
+use Elcodi\Bundle\StoreBundle\CompilerPass\MappingCompilerPass;
+use Elcodi\Bundle\StoreBundle\DependencyInjection\ElcodiStoreExtension;
 
 /**
- * ElcodiCartBundle Bundle
+ * ElcodiStoreBundle Bundle
  */
-class ElcodiCartBundle extends Bundle implements DependentBundleInterface
+class ElcodiStoreBundle extends Bundle implements DependentBundleInterface
 {
     /**
      * @param ContainerBuilder $container
@@ -48,7 +48,7 @@ class ElcodiCartBundle extends Bundle implements DependentBundleInterface
      */
     public function getContainerExtension()
     {
-        return new ElcodiCartExtension();
+        return new ElcodiStoreExtension();
     }
 
     /**
@@ -59,12 +59,10 @@ class ElcodiCartBundle extends Bundle implements DependentBundleInterface
     public static function getBundleDependencies()
     {
         return [
-            'Elcodi\Bundle\UserBundle\ElcodiUserBundle',
-            'Elcodi\Bundle\ProductBundle\ElcodiProductBundle',
+
+            'Elcodi\Bundle\GeoBundle\ElcodiGeoBundle',
+            'Elcodi\Bundle\LanguageBundle\ElcodiLanguageBundle',
             'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
-            'Elcodi\Bundle\StateTransitionMachineBundle\ElcodiStateTransitionMachineBundle',
-            'Elcodi\Bundle\ShippingBundle\ElcodiShippingBundle',
-            'Elcodi\Bundle\StoreBundle\ElcodiStoreBundle',
             'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
         ];
     }
@@ -78,6 +76,6 @@ class ElcodiCartBundle extends Bundle implements DependentBundleInterface
      */
     public function registerCommands(Application $application)
     {
-        return null;
+        return;
     }
 }

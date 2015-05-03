@@ -17,6 +17,9 @@
 
 namespace Elcodi\Component\Configuration\Command;
 
+use Doctrine\Common\Persistence\ObjectManager;
+use Elcodi\Component\Store\Wrapper\StoreWrapper;
+use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

@@ -52,10 +52,11 @@ class ProductCollectionProvider
      */
     public function __construct(
         ProductRepository $productRepository,
-        $useStock
-    ) {
+        $useStock = false
+    )
+    {
         $this->productRepository = $productRepository;
-        $this->useStock          = $useStock;
+        $this->useStock = $useStock;
     }
 
     /**
@@ -136,7 +137,8 @@ class ProductCollectionProvider
      */
     protected function addStockPropertiesToQueryBuilder(
         QueryBuilder $queryBuilder
-    ) {
+    )
+    {
         if ($this->useStock) {
             $queryBuilder
                 ->andWhere($queryBuilder->expr()->orX(

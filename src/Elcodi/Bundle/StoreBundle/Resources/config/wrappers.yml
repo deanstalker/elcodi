@@ -1,0 +1,26 @@
+services:
+
+    #
+    # Resolvers
+    #
+    elcodi.wrapper.store:
+        class: Elcodi\Component\Store\Wrapper\StoreWrapper
+        lazy: true
+        arguments:
+            - @elcodi.repository.store
+
+    elcodi.store:
+        class: Elcodi\Component\Store\Entity\Interfaces\StoreInterface
+        factory: ["@elcodi.wrapper.store", loadStore]
+
+    elcodi.store_template:
+        class: StdClass
+        factory: ["@elcodi.store", getTemplate]
+
+    elcodi.store_uses_stock:
+        class: StdClass
+        factory: ["@elcodi.store", getUseStock]
+
+    elcodi.store_tracker:
+        class: StdClass
+        factory: ["@elcodi.store", getTracker]
